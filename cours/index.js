@@ -82,3 +82,18 @@ const user1 = new User("jha", "casablanca", 24, "kkk@gmail");
 const user2 = new User("fly", "rabat", 25, "koko@gmail");
 
 console.log(user2.getCity());
+
+//factory functions
+
+function User3(pseudo, ville, age, email){
+    return{
+        pseudo,
+        ville,
+        age,
+        email
+    }
+}
+
+const user4 = User3("dol", "tanger", 26, "dol@gmail");
+console.log(user4);
+
