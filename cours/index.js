@@ -125,3 +125,26 @@ console.log(user5);
 /*let array2 = [3, 5, 8];
 console.log(array2);*/
 
+//l'heritage
+class Animal {
+    constructor(name, age){
+        this.name = name;
+        this.age = age
+    }
+    saySomething(text){
+        console.log(this.name + "dit : " + text);
+    }
+}
+
+class Cat extends Animal {
+    hunt(){
+        console.log("le chat chasse !");
+    }
+}
+class Dog extends Animal{
+    run(){
+        console.log("le chien court !");
+    }
+}
+const rintintin = new Dog("rintintin", 5);
+console.log(rintintin);
