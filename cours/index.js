@@ -63,3 +63,22 @@ const newObj = Object.seal(obj);
 newObj.pseudo = "test";
 newObj.age = 25;
 console.log(newObj);
+
+//construire un objet
+
+//fonction constructeur
+function User(pseudo, ville, age, email){
+    this.pseudo = pseudo;
+    this.ville = ville;
+    this.age = age;
+    this.email = email;
+
+    this.getCity = function(){
+        console.log(this.pseudo + " habite à " + this.ville + " et a " + this.age + " ans" + " son email est " + this.email                                                                                                                                                                                                                                                                                                                                                    );
+    }
+}
+
+const user1 = new User("jha", "casablanca", 24, "kkk@gmail");
+const user2 = new User("fly", "rabat", 25, "koko@gmail");
+
+console.log(user2.getCity());
