@@ -30,7 +30,36 @@ obj.pseudo = "fly";
 //console.log("pseudo" in obj);
 //console.log("ville" in obj);
 //parcourir un objet
-for(let key in obj){
+/*for(let key in obj){
     //console.log(key + ":" + obj[key]);
-}
+}*/
 console.log(obj.direBonjour());
+
+//obtenir les clés d'un objet
+const keys = Object.keys(obj);
+console.log(keys);
+
+//obtenir les valeurs d'un objet
+const values = Object.values(obj);                          
+console.log(values);
+
+const nestedArray = Object.entries(obj);
+console.log(nestedArray);
+
+//fusionner deux objets
+
+const obj2 = {
+    taille: "1m82",
+    poids: "100kg"
+}
+
+const fusion = Object.assign(obj, obj2);
+console.log(fusion);
+
+//Empeche les modifications d'un objet                                                                                                                                                                                                                  
+//const newObj = Object.freeze(obj);
+const newObj = Object.seal(obj);
+
+newObj.pseudo = "test";
+newObj.age = 25;
+console.log(newObj);
