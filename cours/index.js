@@ -97,3 +97,31 @@ function User3(pseudo, ville, age, email){
 const user4 = User3("dol", "tanger", 26, "dol@gmail");
 console.log(user4);
 
+//Class
+class Utilisateur {
+    constructor(pseudo, ville, age, email){
+        this.pseudo = pseudo;
+        this.ville = ville;
+        this.age = age;
+        this.email = email;
+    }
+}
+const user5 = new Utilisateur("toto", "village", 124, "toto@gmail");
+Utilisateur.prototype.getCity = function(){
+    console.log(this.pseudo + " habite à " + this.ville + " et a " + this.age + " ans" + " son email est " + this.email);
+}   
+
+
+Object.assign(Utilisateur.prototype, {
+    method1(){
+        //console.log("method 1");
+    },
+    method2(){
+        //console.log("method 2");
+    }
+})
+console.log(user5);
+
+/*let array2 = [3, 5, 8];
+console.log(array2);*/
+
