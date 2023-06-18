@@ -58,6 +58,8 @@ const utils = {
 
 const page = {
   lobby: function(){
+
+    exerciceArray.map
       utils.pageContent(
         "Paramétrage <i id='reboot' class='fas fa-undo'></i>",
         "Exercices",
@@ -66,10 +68,14 @@ const page = {
       )
     },
     routine: function(){
-
+      utils.pageContent("Routine",
+      "Exercice avec chrono",
+      null);
     },
     finish: function(){
-
+      utils.pageContent("Bravo",
+      "<button id='restart'>Recommencer</button>",
+      "<button id='reboot' class='btn-reboot'>réinitialiser<i class='fas fa-times-circle'</i></button>");
     }
 }
-page.lobby();                                                                                                                                                
+page.finish();                                                                                                                                                
