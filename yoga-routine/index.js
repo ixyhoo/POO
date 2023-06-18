@@ -59,10 +59,21 @@ const utils = {
 const page = {
   lobby: function(){
 
-    exerciceArray.map
+   let mapArray = exerciceArray
+   .map((exo)=>
+      `
+      <li>
+      <div class="card-header">
+      <input type="number" id=${exo.pic} min="1" max="10" value=${exo.min} >
+      <span>min</span>
+      </div>
+      </li>
+      `
+    ).jpoin("");
+
       utils.pageContent(
         "Paramétrage <i id='reboot' class='fas fa-undo'></i>",
-        "Exercices",
+        "<ul>" + mapArray + "</ul>",
         "<button id='start'>Commencer<i class='far fa-play-circle'></i></button>"                        
 
       )
@@ -78,4 +89,4 @@ const page = {
       "<button id='reboot' class='btn-reboot'>réinitialiser<i class='fas fa-times-circle'</i></button>");
     }
 }
-page.finish();                                                                                                                                                
+page.lobby();                                                                                                                                                
