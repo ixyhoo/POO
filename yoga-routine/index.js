@@ -54,6 +54,17 @@ const utils = {
   main.innerHTML = content;
   document.querySelector('.btn-container').innerHTML = btn;
  },
+  handleEventMinutes: function(){
+    document.querySelectorAll("input[type='number'").forEach((input)=>{ 
+      input.addEventListener("input", (e)=>{
+        exerciceArray.map((exo)=>{                                                                                                                                              
+          if(exo.pic == e.target.id){
+            exo.min = parsInt(e.target.value);
+          }
+        })
+      });
+  });
+  }
 };
 
 const page = {
