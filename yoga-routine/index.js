@@ -1,5 +1,5 @@
 const main = document.querySelector("main");
-let exerciseArray = [
+let exerciceArray = [
   {
     pic: 0,
     min: 1,
@@ -58,7 +58,6 @@ const utils = {
 
 const page = {
   lobby: function(){
-
    let mapArray = exerciceArray
    .map((exo)=>
       `
@@ -67,16 +66,20 @@ const page = {
       <input type="number" id=${exo.pic} min="1" max="10" value=${exo.min} >
       <span>min</span>
       </div>
+      <img src="./img/${exo.pic}.png" alt="exercice ${exo.pic}"/>
+      <i class="fas fa-arrow-alt-circle-left arrow" data-pic=${exo.pic}></i>
+      <i class="fas fa-times-circle deleteBtn" data-pic=${exo.pic}></i>
       </li>
       `
-    ).jpoin("");
+    ).join("");
 
       utils.pageContent(
         "Paramétrage <i id='reboot' class='fas fa-undo'></i>",
         "<ul>" + mapArray + "</ul>",
         "<button id='start'>Commencer<i class='far fa-play-circle'></i></button>"                        
 
-      )
+      );
+      utils.handleEventMinutes();
     },
     routine: function(){
       utils.pageContent("Routine",
