@@ -72,10 +72,10 @@ const utils = {
         let position = 0;
         exerciceArray.map((exo)=>{
           if (exo.pic == e.target.dataset.pic){
-            console.log("yes");
+            [exerciceArray[position], exerciceArray[position -1]] = [exerciceArray[1], exerciceArray[position -1]];
+            console.log(exerciceArray);
           } else{
             position++;
-            console.log(position);
           }
         })
       });
