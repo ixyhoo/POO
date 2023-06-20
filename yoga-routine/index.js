@@ -66,6 +66,22 @@ const utils = {
       });
   });
   },
+  handleEventArrow: function(){
+    document.querySelectorAll(".arrow").forEach((arrow)=>{
+      arrow.addEventListener("click", (e)=>{
+        let position = 0;
+        exerciceArray.map((exo)=>{
+          if (exo.pic == e.target.dataset.pic){
+            console.log("yes");
+          } else{
+            position++;
+            console.log(position);
+          }
+        })
+      });
+
+  });
+}
 };
 
 const page = {
@@ -92,6 +108,7 @@ const page = {
 
       );
       utils.handleEventMinutes();
+      utils.handleEventArrow();
     },
     routine: function(){
       utils.pageContent("Routine",
