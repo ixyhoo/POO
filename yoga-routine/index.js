@@ -57,14 +57,15 @@ const utils = {
   handleEventMinutes: function(){
     document.querySelectorAll("input[type='number'").forEach((input)=>{ 
       input.addEventListener("input", (e)=>{
-        exerciceArray.map((exo)=>{                                                                                                                                              
-          if(exo.pic == e.target.id){
-            exo.min = parsInt(e.target.value);
+        exerciceArray.map((exo)=>{
+          if (exo.pic == e.target.id){
+            exo.min = parseInt(e.target.value); 
+            console.log(exerciceArray);                                                                                                                                                                                                                                                                                            
           }
         })
       });
   });
-  }
+  },
 };
 
 const page = {
