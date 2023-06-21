@@ -88,9 +88,12 @@ deleteItem: function(){
     btn.addEventListener("click", (e)=> {
       let newArray = [];
   exerciceArray.map((exo)=>{
-        exo.pic != e.target.dataset.pic;
+       if (exo.pic != e.target.dataset.pic){
+         newArray.push(exo);
+       }
       });
-      console.log(newArr);
+      exerciceArray = newArray;
+      page.lobby();
     });
   });
 },
