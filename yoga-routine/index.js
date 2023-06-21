@@ -84,10 +84,16 @@ const utils = {
   });
 },
 deleteItem: function(){
-  document.querySelectorAll(".deleteBtn").forEach((Btn)=>{
-    BroadcastChannel.addEventListener("click", (e)=>
-  })
-}
+  document.querySelectorAll(".deleteBtn").forEach((btn)=>{
+    btn.addEventListener("click", (e)=> {
+      let newArray = [];
+  exerciceArray.map((exo)=>{
+        exo.pic != e.target.dataset.pic;
+      });
+      console.log(newArr);
+    });
+  });
+},
 };
 
 const page = {
