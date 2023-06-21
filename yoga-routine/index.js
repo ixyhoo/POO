@@ -71,9 +71,10 @@ const utils = {
       arrow.addEventListener("click", (e)=>{
         let position = 0;
         exerciceArray.map((exo)=>{
-          if (exo.pic == e.target.dataset.pic){
-            [exerciceArray[position], exerciceArray[position -1]] = [exerciceArray[1], exerciceArray[position -1]];
-            console.log(exerciceArray);
+          if (exo.pic == e.target.dataset.pic && position !== 0){
+            [exerciceArray[position], exerciceArray[position -1]] = [exerciceArray[position -1], exerciceArray[position]
+          ];
+            page.lobby();
           } else{
             position++;
           }
