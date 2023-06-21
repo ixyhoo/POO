@@ -82,6 +82,11 @@ const utils = {
       });
 
   });
+},
+deleteItem: function(){
+  document.querySelectorAll(".deleteBtn").forEach((Btn)=>{
+    BroadcastChannel.addEventListener("click", (e)=>
+  })
 }
 };
 
@@ -110,6 +115,7 @@ const page = {
       );
       utils.handleEventMinutes();
       utils.handleEventArrow();
+      utils.deleteItem();
     },
     routine: function(){
       utils.pageContent("Routine",
