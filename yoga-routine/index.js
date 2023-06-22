@@ -1,6 +1,6 @@
 const main = document.querySelector("main");
-let exerciceArray = [
-  {
+const basicArray = [
+    {
     pic: 0,
     min: 1,
   },
@@ -41,6 +41,7 @@ let exerciceArray = [
     min: 1,
   },
 ];
+let exerciceArray = [];
 class Exercise {
   /*constructor(pic, min) {
     this.pic = pic;
@@ -49,61 +50,68 @@ class Exercise {
 }
 
 const utils = {
- pageContent: function(title, content, btn){
-  document.querySelector("h1").innerHTML = title;
-  main.innerHTML = content;
-  document.querySelector('.btn-container').innerHTML = btn;
- },
-  handleEventMinutes: function(){
-    document.querySelectorAll("input[type='number'").forEach((input)=>{ 
-      input.addEventListener("input", (e)=>{
-        exerciceArray.map((exo)=>{
-          if (exo.pic == e.target.id){
-            exo.min = parseInt(e.target.value); 
-            console.log(exerciceArray);                                                                                                                                                                                                                                                                                            
-          }
-        })
-      });
-  });
+  pageContent: function (title, content, btn) {
+    document.querySelector("h1").innerHTML = title;
+    main.innerHTML = content;
+    document.querySelector(".btn-container").innerHTML = btn;
   },
-  handleEventArrow: function(){
-    document.querySelectorAll(".arrow").forEach((arrow)=>{
-      arrow.addEventListener("click", (e)=>{
+  handleEventMinutes: function () {
+    document.querySelectorAll("input[type='number'").forEach((input) => {
+      input.addEventListener("input", (e) => {
+        exerciceArray.map((exo) => {
+          if (exo.pic == e.target.id) {
+            exo.min = parseInt(e.target.value);
+            console.log(exerciceArray);
+          }
+        });
+      });
+    });
+  },
+  handleEventArrow: function () {
+    document.querySelectorAll(".arrow").forEach((arrow) => {
+      arrow.addEventListener("click", (e) => {
         let position = 0;
-        exerciceArray.map((exo)=>{
-          if (exo.pic == e.target.dataset.pic && position !== 0){
-            [exerciceArray[position], exerciceArray[position -1]] = [exerciceArray[position -1], exerciceArray[position]
-          ];
+        exerciceArray.map((exo) => {
+          if (exo.pic == e.target.dataset.pic && position !== 0) {
+            [exerciceArray[position], exerciceArray[position - 1]] = [
+              exerciceArray[position - 1],
+              exerciceArray[position],
+            ];
             page.lobby();
-          } else{
+          } else {
             position++;
           }
-        })
+        });
       });
-
-  });
-},
-deleteItem: function(){
-  document.querySelectorAll(".deleteBtn").forEach((btn)=>{
-    btn.addEventListener("click", (e)=> {
-      let newArray = [];
-  exerciceArray.map((exo)=>{
-       if (exo.pic != e.target.dataset.pic){
-         newArray.push(exo);
-       }
-      });
-      exerciceArray = newArray;
-      page.lobby();
     });
-  });
-},
+  },
+  deleteItem: function () {
+    document.querySelectorAll(".deleteBtn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        let newArray = [];
+        exerciceArray.map((exo) => {
+          if (exo.pic != e.target.dataset.pic) {
+            newArray.push(exo);
+          }
+        });
+        exerciceArray = newArray;
+        page.lobby();
+      });
+    });
+  },
+  reboot: function () {
+    exerciceArray = basicArray;
+    page.lobby();                                                                                                                                   
+
+  }
 };
 
 const page = {
-  lobby: function(){
-   let mapArray = exerciceArray
-   .map((exo)=>
-      `
+  lobby: function () {
+    let mapArray = exerciceArray
+      .map(
+        (exo) =>
+          `
       <li>
       <div class="card-header">
       <input type="number" id=${exo.pic} min="1" max="10" value=${exo.min} >
@@ -114,27 +122,28 @@ const page = {
       <i class="fas fa-times-circle deleteBtn" data-pic=${exo.pic}></i>
       </li>
       `
-    ).join("");
+      )
+      .join("");
 
-      utils.pageContent(
-        "Paramétrage <i id='reboot' class='fas fa-undo'></i>",
-        "<ul>" + mapArray + "</ul>",
-        "<button id='start'>Commencer<i class='far fa-play-circle'></i></button>"                        
-
-      );
-      utils.handleEventMinutes();
-      utils.handleEventArrow();
-      utils.deleteItem();
-    },
-    routine: function(){
-      utils.pageContent("Routine",
-      "Exercice avec chrono",
-      null);
-    },
-    finish: function(){
-      utils.pageContent("Bravo",
+    utils.pageContent(
+      "Paramétrage <i id='reboot' class='fas fa-undo'></i>",
+      "<ul>" + mapArray + "</ul>",
+      "<button id='start'>Commencer<i class='far fa-play-circle'></i></button>"
+    );
+    utils.handleEventMinutes();
+    utils.handleEventArrow();
+    utils.deleteItem();
+    reboot.addEventListener("click", () => utils.reboot());
+  },
+  routine: function () {
+    utils.pageContent("Routine", "Exercice avec chrono", null);
+  },
+  finish: function () {
+    utils.pageContent(
+      "Bravo",
       "<button id='restart'>Recommencer</button>",
-      "<button id='reboot' class='btn-reboot'>réinitialiser<i class='fas fa-times-circle'</i></button>");
-    }
-}
-page.lobby();                                                                                                                                                
+      "<button id='reboot' class='btn-reboot'>réinitialiser<i class='fas fa-times-circle'</i></button>"
+    );
+  },
+};
+page.lobby();
