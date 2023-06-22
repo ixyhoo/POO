@@ -42,6 +42,15 @@ const basicArray = [
   },
 ];
 let exerciceArray = [];
+
+//get stored exercices array
+(()=> {
+  if (localStorage.exercices){
+    exerciceArray = localStorage.exercices;
+  }else{
+    exerciceArray = basicArray;
+  }
+})();
 class Exercise {
   /*constructor(pic, min) {
     this.pic = pic;
@@ -61,7 +70,7 @@ const utils = {
         exerciceArray.map((exo) => {
           if (exo.pic == e.target.id) {
             exo.min = parseInt(e.target.value);
-            console.log(exerciceArray);
+            this.store();
           }
         });
       });
@@ -78,6 +87,7 @@ const utils = {
               exerciceArray[position],
             ];
             page.lobby();
+            this.store();
           } else {
             position++;
           }
@@ -96,14 +106,19 @@ const utils = {
         });
         exerciceArray = newArray;
         page.lobby();
+        this.store();
       });
     });
   },
   reboot: function () {
     exerciceArray = basicArray;
-    page.lobby();                                                                                                                                   
+    page.lobby();  
+    this.store();                                                                                                                                 
 
-  }
+  },
+  store: function () {
+    localStorage.exercices = JSON.stringify(exerciceArray);
+  },
 };
 
 const page = {
