@@ -50,12 +50,23 @@ let exerciceArray = [];
   } else {
     exerciceArray = basicArray;
   }
-});
+})();
 class Exercise {
-  /*constructor(pic, min) {
-    this.pic = pic;
-    this.min = min;
-  }*/
+  constructor() {
+    this.index = 0;
+    this.minutes = exerciceArray[this.index].min;
+    this.seconds = 0;
+  }
+
+  updateCoundown() {
+    main.innerHTML = `
+    <div class="exercice-container">
+    <p>${this.minutes} : ${this.seconds}</p>
+    <img src="./img/${exerciceArray[this.index].pic}.png" />
+    <div>${this.index + 1} / ${exerciceArray.length}</div>
+    </div>
+    `
+  }
 }
 
 const utils = {
@@ -152,7 +163,9 @@ const page = {
     start.addEventListener("click", () => this.routine());
   },
   routine: function () {
-    utils.pageContent("Routine", "Exercice avec chrono", null);
+    const exercice = new Exercice();
+
+    utils.pageContent("Routine", exercice.updateCoundown, null);
   },
   finish: function () {
     utils.pageContent(
