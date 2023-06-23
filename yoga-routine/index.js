@@ -59,13 +59,13 @@ class Exercise {
   }
 
   updateCoundown() {
-    main.innerHTML = `
+    return (main.innerHTML = `
     <div class="exercice-container">
     <p>${this.minutes} : ${this.seconds}</p>
     <img src="./img/${exerciceArray[this.index].pic}.png" />
     <div>${this.index + 1} / ${exerciceArray.length}</div>
     </div>
-    `
+    `);
   }
 }
 
@@ -165,7 +165,7 @@ const page = {
   routine: function () {
     const exercice = new Exercice();
 
-    utils.pageContent("Routine", exercice.updateCoundown, null);
+    utils.pageContent("Routine", exercice.updateCoundown(), null);
   },
   finish: function () {
     utils.pageContent(
