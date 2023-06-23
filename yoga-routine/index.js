@@ -44,13 +44,13 @@ const basicArray = [
 let exerciceArray = [];
 
 //get stored exercices array
-(()=> {
-  if (localStorage.exercices){
+(() => {
+  if (localStorage.exercices) {
     exerciceArray = JSON.parse(localStorage.exercices);
   } else {
     exerciceArray = basicArray;
   }
-})();
+});
 class Exercise {
   /*constructor(pic, min) {
     this.pic = pic;
@@ -149,6 +149,7 @@ const page = {
     utils.handleEventArrow();
     utils.deleteItem();
     reboot.addEventListener("click", () => utils.reboot());
+    start.addEventListener("click", () => this.routine());
   },
   routine: function () {
     utils.pageContent("Routine", "Exercice avec chrono", null);
