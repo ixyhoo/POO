@@ -201,6 +201,9 @@ const page = {
       "<button id='restart'>Recommencer</button>",
       "<button id='reboot' class='btn-reboot'>réinitialiser<i class='fas fa-times-circle'</i></button>"
     );
+
+    start.addEventListener("click", () => this.routine());
+    reboot.addEventListener("click", () => utils.reboot());
   },
 };
 page.lobby();
