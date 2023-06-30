@@ -58,7 +58,9 @@ class Exercise {
     this.seconds = 0;
   }
 
-  updateCoundown() {
+  updateCountdown() {
+
+    
     return (main.innerHTML = `
     <div class="exercice-container">
     <p>${this.minutes} : ${this.seconds}</p>
@@ -76,7 +78,7 @@ const utils = {
     document.querySelector(".btn-container").innerHTML = btn;
   },
   handleEventMinutes: function () {
-    document.querySelectorAll("input[type='number'").forEach((input) => {
+    document.querySelectorAll("input[type='number']").forEach((input) => {
       input.addEventListener("input", (e) => {
         exerciceArray.map((exo) => {
           if (exo.pic == e.target.id) {
@@ -163,9 +165,9 @@ const page = {
     start.addEventListener("click", () => this.routine());
   },
   routine: function () {
-    const exercice = new Exercice();
+    const exercice = new Exercise();
 
-    utils.pageContent("Routine", exercice.updateCoundown(), null);
+    utils.pageContent("Routine", exercice.updateCountdown(), null);
   },
   finish: function () {
     utils.pageContent(
