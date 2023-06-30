@@ -59,8 +59,22 @@ class Exercise {
   }
 
   updateCountdown() {
+    this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
 
-    
+    setTimeout(() => {
+      if(this.minutes === 0 && this.seconds === "00") {  
+        this.index++;
+        this.updateCountdown();
+      }else if(this.seconds === "00") {
+        this.minutes--;
+        this.seconds = 59;
+        this.updateCountdown();
+       }else {
+        this.seconds--;
+        this.updateCountdown();
+       }
+    }, 1000);
+
     return (main.innerHTML = `
     <div class="exercice-container">
     <p>${this.minutes} : ${this.seconds}</p>
